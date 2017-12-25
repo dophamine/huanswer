@@ -1,2 +1,4 @@
 # huyanswer
-Script-joke for the competetive insterest.
+Script-joke just for fun.
+
+Replaces given word with some interesting rules.
