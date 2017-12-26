@@ -7,13 +7,16 @@ function huanswer(word, config = {}) {
     // turn on/off reactions for errors, validatings fails, etc.
     reactForFails: true,
     // this letters will be as replacer
-    mainReplacer: 'ху',
+    mainReplacer: "ху",
     // some random reactions
     reactions: ["норм слово придумай", "что это было? тебе плохо?", "меня не обманешь, я программист", "меня не проведешь", "затяни лямку, сынок", "решил меня сломать, шалун?"],
-    // replacer rules as for the default mainReplacer 
+    // vowels as keys and replacer rules as for the default mainReplacer
     vowelsDict: { "а": "я", "и": "и", "у": "ю", "э": "е", "и": "и", "е": "е", "ё": "ё", "о": "ё", "ы": "и", "я": "я" },
+    // ignore {vowelsDict} replacer rules (in this case as value will be used empty string "")
+    ignoreVowelsLinkingRules: false,
     // predefined word prefixes
     prefixes: ["без", "бес", "разо", "рас", "роз", "про", "при", "пред", "пре", "раз", "надо", "над", "за", "до", "от", "из"],
+    minWordLength: 3,
     // how long can be a word without prefix concatenation in result
     maxNonPrefixLength: 11,
     // how short can be a word without prefix
@@ -34,8 +37,10 @@ function huanswer(word, config = {}) {
 
   try {
     if (!word) return getReaction();
-    // validate input and store origin
+    // validate input
     word = word.toString().trim().toLowerCase();
+    if (word.length < config.minWordLength) return getReaction();
+
     const origin = word;
 
     // search for word prefix
@@ -79,7 +84,7 @@ function huanswer(word, config = {}) {
       rootRegExp,
       (match, p1, offset, initial) => {
         config.debug && console.log(match, p1, existantVowelsIds[vowelIndex]);
-        return config.mainReplacer + config.vowelsDict[p1];
+        return config.mainReplacer + (config.ignoreVowelsLinkingRules ? "" : config.vowelsDict[p1]);
       }
     );
 
