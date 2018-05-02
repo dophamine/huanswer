@@ -3,7 +3,7 @@ Script-joke just for fun (18+).
 
 Replaces given word with some interesting rules.
 
-[DEMO](https://codepen.io/dophamine/pen/PemQVv)
+[DEMO](https://dophamine.github.io/huanswer/)
 
 ## Usage
 ```javascript
