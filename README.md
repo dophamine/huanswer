@@ -3,6 +3,8 @@ Script-joke just for fun (18+).
 
 Replaces given word with some interesting rules.
 
+(DEMO)[https://codepen.io/dophamine/pen/PemQVv]
+
 ## Usage
 ```javascript
 huanswer("слово");
