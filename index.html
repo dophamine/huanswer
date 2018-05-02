@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Huanswer.js</title>
+  <style>
+      body {
+        font-family: monospace;
+        font-size: 1.3rem;
+      }
+  </style>
+  <script type="text/javascript" src="huanswer.js"></script>
+</head>
+<body>
+  <input class="source" type="text" placeholder="Введи слово">
+  <br>
+  <h3>Result:</h3>
+  <p class="result"></p>
+  <script>
+    const sourceElement = document.querySelector('.source');
+    const resultElement = document.querySelector('.result');
+
+    sourceElement.addEventListener('input', event => {
+      resultElement.innerText = huanswer(sourceElement.value);
+    });
+  </script>
+</body>
+</html>
